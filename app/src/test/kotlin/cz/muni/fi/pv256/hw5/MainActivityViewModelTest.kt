@@ -11,16 +11,22 @@ class MainActivityViewModelTest {
 
     @Before
     fun setUp() {
-        // TODO uncomment: counter = MainActivityViewModel(savedStateHandle)
+        counter = MainActivityViewModel(savedStateHandle)
     }
 
     @Test
     fun incrementCount() {
         // TODO implement
+        val expectResult: Int = counter.getCount() + 1
+        counter.incrementCount()
+        assert(expectResult == counter.getCount())
     }
 
     @Test
     fun decrementCount() {
         // TODO implement
+        val expectResult: Int = counter.getCount() - 1
+        counter.incrementCount()
+        assert(expectResult == counter.getCount())
     }
 }
