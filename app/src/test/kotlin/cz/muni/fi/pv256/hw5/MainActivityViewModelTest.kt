@@ -2,7 +2,6 @@ package cz.muni.fi.pv256.hw5
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
-import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
