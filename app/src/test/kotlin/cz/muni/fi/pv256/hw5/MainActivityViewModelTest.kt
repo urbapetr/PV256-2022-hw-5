@@ -6,15 +6,20 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
+import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class MainActivityViewModelTest {
-
-    private lateinit var savedStateHandle: SavedStateHandle
-    private lateinit var counter: Counter
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
+
+    @Mock
+    private lateinit var savedStateHandle: SavedStateHandle
+    private lateinit var counter: Counter
 
     @Before
     fun setUp() {

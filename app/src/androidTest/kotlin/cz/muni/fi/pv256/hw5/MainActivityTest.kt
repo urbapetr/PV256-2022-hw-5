@@ -8,7 +8,9 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.hamcrest.Matcher
 import org.junit.Test
@@ -45,7 +47,8 @@ class MainActivityTest {
 
     private fun getText(matcher: Matcher<View?>?): String? {
         val stringHolder = arrayOf<String?>(null)
-        onView(matcher).perform(object : ViewAction {
+        onView(matcher).perform(
+            object : ViewAction {
             override fun getConstraints(): Matcher<View> {
                 return isAssignableFrom(TextView::class.java)
             }
@@ -54,10 +57,11 @@ class MainActivityTest {
             }
 
             override fun perform(uiController: UiController?, view: View) {
-                val tv = view as TextView //Save, because of check in getConstraints()
+                val tv = view as TextView // Save, because of check in getConstraints()
                 stringHolder[0] = tv.text.toString()
             }
-        })
+        }
+        )
         return stringHolder[0]
     }
 }
