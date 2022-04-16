@@ -2,6 +2,7 @@ package cz.muni.fi.pv256.hw5
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
+import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -31,13 +32,13 @@ class MainActivityViewModelTest {
     fun incrementCount() {
         val expectResult: Int = counter.getCount() + 1
         counter.incrementCount()
-        assert(expectResult == counter.getCount())
+        assertEquals(expectResult, counter.getCount())
     }
 
     @Test
     fun decrementCount() {
         val expectResult: Int = counter.getCount() - 1
         counter.decrementCount()
-        assert(expectResult == counter.getCount())
+        assertEquals(expectResult, counter.getCount())
     }
 }

@@ -22,27 +22,33 @@ class MainActivityTest {
 
     @Test
     fun testIncrementCounter() {
-        val scenario = launchActivity<MainActivity>()
-        val result = parseInt(getText(withId(R.id.counter)))
+        launchActivity<MainActivity>()
+        val result = getText(withId(R.id.counter))?.toInt()
         onView(withId(R.id.increment)).perform(click())
-        onView(withId(R.id.counter)).check(matches(withText((result + 1).toString())))
+        if (result != null) {
+            onView(withId(R.id.counter)).check(matches(withText((result + 1).toString())))
+        }
     }
 
     @Test
     fun testDecrementCounter() {
-        val scenario = launchActivity<MainActivity>()
-        val result = parseInt(getText(withId(R.id.counter)))
+        launchActivity<MainActivity>()
+        val result = getText(withId(R.id.counter))?.toInt()
         onView(withId(R.id.decrement)).perform(click())
-        onView(withId(R.id.counter)).check(matches(withText((result - 1).toString())))
+        if (result != null) {
+            onView(withId(R.id.counter)).check(matches(withText((result - 1).toString())))
+        }
     }
 
     @Test
     fun testCounterPersistance() {
         val scenario = launchActivity<MainActivity>()
-        val result = parseInt(getText(withId(R.id.counter)))
+        val result = getText(withId(R.id.counter))?.toInt()
         onView(withId(R.id.decrement)).perform(click())
         scenario.recreate()
-        onView(withId(R.id.counter)).check(matches(withText((result - 1).toString())))
+        if (result != null) {
+            onView(withId(R.id.counter)).check(matches(withText((result - 1).toString())))
+        }
     }
 
     private fun getText(matcher: Matcher<View?>?): String? {
